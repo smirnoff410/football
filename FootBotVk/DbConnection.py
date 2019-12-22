@@ -1,6 +1,7 @@
 from __future__ import annotations
 from typing import Optional
-import psycopg2
+from sqlalchemy import create_engine
+from sqlalchemy import Table, Column, String, Integer, MetaData, ForeignKey
 
 
 class SingletonMeta(type):
@@ -21,20 +22,23 @@ class SingletonMeta(type):
 class DbContext(metaclass=SingletonMeta):
 
     def __init__(self):
-        self.__con = psycopg2.connect(
-            database="postgres",
-            user="postgres",
-            password="",
-            host="127.0.0.1",
-            port="5432"
-        )
+        self.__db = create_engine('postgresql://postgres:12345@localhost/postgres')
+        self.__meta = MetaData(self.__db)
 
-    def CreateTable(self):
+    def CreateTables(self):
+        player_table = Table('player', self.__meta,
+                             Column('Id', Integer, primary_key=True),
+                             Column('Name', String),
+                             Column("Priority"), Integer)
+        with self.__db.connect() as conn:
+            player_table.create()
+            insert_statement = player_table.insert().values(Id=1, Name='vlad', Priority=0)
+            conn.execute(insert_statement)
+
+    def InsertUser(self, name, priority):
         cur = self.__con.cursor()
-        cur.execute('''CREATE TABLE STUDENT  
-             (ADMISSION INT PRIMARY KEY NOT NULL,
-             NAME TEXT NOT NULL,
-             AGE INT NOT NULL,
-             COURSE CHAR(50),
-             DEPARTMENT CHAR(50));''')
+        cur.execute(
+            "INSERT INTO PLAYER (NAME, PRIORITY) VALUES ('" + name + "', " + str(priority) + ")"
+        )
         self.__con.commit()
+        self.__con.close()

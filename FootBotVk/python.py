@@ -3,9 +3,15 @@ import vk_api
 
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 from commands import *
+from DbConnection import *
 
-def write_msg(user_id, message):
-            vk.method('messages.send', {'peer_id': peer_id, 'message': message, 'random_id': random.randint(0, 2048)})
+
+def write_msg(peer_id, message):
+    vk.method('messages.send', {'peer_id': peer_id, 'message': message, 'random_id': random.randint(0, 2048)})
+
+
+db = DbContext()
+db.CreateTables()
 
 # API-ключ созданный ранее
 token = "5b2626444cb4bdbf04e4f7986caf38f4e931a86aa660ee163ed2363431b8b38c166f067c679d9774e8274"
