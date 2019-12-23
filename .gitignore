@@ -2,3 +2,12 @@ FootBotVk/__pycache__/*
 FootBotVk/.idea/*
 FootBotVk/venv/*
 FootBotVk/venv/pyvenv.cfg
+FootBall/.vs/*
+FootBall/FootBall.Contacts/obj/*
+FootBall/FootBall.Web/obj/*
+FootBall/FootBall.Contacts/bin/*
+FootBall/FootBall.Domains/bin/*
+FootBall/FootBall.Domains/obj/*
+FootBall/FootBall.Infrastructure/bin/*
+FootBall/FootBall.Infrastructure/obj/*
+FootBall/FootBall.Web/bin/*
