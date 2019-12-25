@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using FootBall.Domains.Entities.Base;
 using FootBall.Domains.Repository.Base;
 using FootBall.Infrastructure.Services.Session;
@@ -23,7 +22,7 @@ namespace FootBall.Infrastructure.Repositories.Base
             Session.Flush();
         }
 
-        public T GetById(Guid id)
+        public T GetById(int id)
         {
             return Session.Get<T>(id);
         }

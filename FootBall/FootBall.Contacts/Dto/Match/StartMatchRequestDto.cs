@@ -2,6 +2,6 @@
 {
     public class StartMatchRequestDto
     {
-        public int PlayerCount { get; set; }
+        public int PlayersCount { get; set; }
     }
 }

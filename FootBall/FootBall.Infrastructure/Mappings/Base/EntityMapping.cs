@@ -8,7 +8,7 @@ namespace FootBall.Infrastructure.Mappings.Base
     {
         public EntityMapping()
         {
-            Id(x => x.Id, mapper => mapper.Generator(new GuidGeneratorDef()));
+            Id(x => x.Id, mapper => mapper.Generator(new IdentityGeneratorDef()));
             Property(x => x.IsDeleted);
             Property(x => x.Timestamp);
         }

@@ -7,7 +7,6 @@ namespace FootBall.Infrastructure.Mappings
     {
         public MatchMapping()
         {
-            Property(c => c.Number);
             Property(c => c.PlayersCount);
             Bag(c => c.Players, k =>
             {

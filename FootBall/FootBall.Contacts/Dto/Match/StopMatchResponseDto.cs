@@ -4,7 +4,7 @@ namespace FootBall.Contacts.Dto.Match
 {
     public class StopMatchResponseDto
     {
-        public IEnumerable<string> MainPlayers { get; set; }
-        public IEnumerable<string> StockPlayers { get; set; }
+        public List<string> MainPlayers { get; set; }
+        public List<string> StockPlayers { get; set; }
     }
 }
